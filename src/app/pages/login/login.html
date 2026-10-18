@@ -1,1 +1,48 @@
-<p>login works!</p>
+<main class="flex flex-col space-y-6 justify-center items-center bg-gray-100">
+  <h1>{{ title() }}</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+    <div class="flex flex-col space-y-6">
+      <div>
+        <div>
+          <input class="border border-gray-300" placeholder="email" formControlName="email" />
+        </div>
+        @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+          <div>
+            <span style="color: red">O campo é obrigatório.</span>
+          </div>
+        } @else if (loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched) {
+          <div>
+            <span style="color: red">O email informado não é válido.</span>
+          </div>
+        }
+      </div>
+      <div>
+        <div>
+          <input class="border border-gray-300" placeholder="senha" formControlName="senha" />
+        </div>
+        @if (loginForm.get('senha')?.hasError('required') && loginForm.get('senha')?.touched) {
+          <div>
+            <span style="color: red">O campo é obrigatório.</span>
+          </div>
+        } @else if (
+          loginForm.get('senha')?.hasError('minlength') && loginForm.get('senha')?.touched
+        ) {
+          <div>
+            <span style="color: red">A senha deve ter no mínimo 6 caracteres.</span>
+          </div>
+        }
+      </div>
+
+      <div class="flex justify-center pb-4">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
+          type="submit"
+          [disabled]="!loginForm.valid"
+        >
+          Logar
+        </button>
+      </div>
+    </div>
+  </form>
+</main>
