@@ -2,19 +2,19 @@
   <h1>{{ title() }}</h1>
 
   <app-navbar></app-navbar>
-  <div>
-    <div>
-      @for (item of listaNoticias; track item) {
+  <div class="border p-4 rounded-xl w-full">
+    @for (item of listaNoticias; track item) {
+      <div class="border p-4 mb-6 rounded-xl hover:bg-gray-200 hover:text-white">
         <div>
-          <div>
-            <div>Date : 11/10/2026</div>
+          <div class="flex justify-between text-xs text-gray-400 pb-6">
+            <div>Date : 19/10/2026</div>
             <div>Dev Borges</div>
           </div>
         </div>
         <div>
           <p>Está e a minha notícia de exemplo.</p>
         </div>
-      }
-    </div>
+      </div>
+    }
   </div>
 </main>

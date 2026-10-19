@@ -9,7 +9,7 @@ export class LoginService {
   private readonly http = inject(HttpClient);
   constructor() {}
 
-  private readonly baseUrl = environment['endpoint'];
+  private readonly baseUrl = (environment as any)['endpoint'];
 
   LoginUsuario(objeto: any) {
     return this.http.post<any>(`${this.baseUrl}/CriarTokenIdentity/`, objeto);
