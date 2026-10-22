@@ -34,6 +34,17 @@
         }
       </div>
 
+      <div>
+        <div>
+          <input class="border border-gray-300" placeholder="celular" formControlName="celular" />
+        </div>
+        @if (loginForm.get('celular')?.hasError('required') && loginForm.get('celular')?.touched) {
+          <div>
+            <span style="color: red">O campo é obrigatório.</span>
+          </div>
+        }
+      </div>
+
       <div class="flex justify-center pb-4">
         <button
           class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"

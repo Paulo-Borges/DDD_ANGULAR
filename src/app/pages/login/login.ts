@@ -23,6 +23,7 @@ export class Login implements OnInit {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
+      celular: ['', [Validators.required]],
     });
   }
 
@@ -30,13 +31,13 @@ export class Login implements OnInit {
     debugger;
     var dadosLogin = this.loginForm.getRawValue() as LoginModel;
 
-    // this.loginService.LoginUsuario(dadosLogin).subscribe({
-    //   next: (token) => {
-    //     debugger;
-    //     var nossoToken = token;
-    //   },
-    //   error: (error) => {},
-    // });
+    this.loginService.LoginUsuario(dadosLogin).subscribe({
+      next: (token) => {
+        debugger;
+        var nossoToken = token;
+      },
+      error: (error) => {},
+    });
 
     this.router.navigate(['/noticias']);
   }
